@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  aide.service:
+    build:
+      context: ./aide
+    command: /entrypoint.sh
+    container_name: aide.service
+    depends_on:
+      - host.service
+    image: aide:test
+    volumes:
+      - "aide.bin:/host/bin"
+      - "aide.sbin:/host/sbin"
+      - "./aidevar/:/var/lib/aide"
+  host.service:
+    command: init
+    container_name: host.service
+    image: registry.hub.docker.com/library/centos:centos7
+    volumes:
+      - "aide.bin:/bin"
+      - "aide.sbin:/sbin"
+      - "./aidevar/:/var/lib/aide"
+      - "host/files/bin/aide:/bin/aide"
+volumes:
+  aide.bin:
+  aide.sbin:

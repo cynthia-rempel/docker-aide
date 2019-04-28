@@ -1,0 +1,5 @@
+docker run --rm \
+           --volume /bin:/host/bin \
+           --volume /sbin:/host/sbin \
+           --volume /var/lib/aide:/var/lib/aide \
+           aide:test entrypoint.sh

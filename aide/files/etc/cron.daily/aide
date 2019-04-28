@@ -1,0 +1,1 @@
+#!/bin/bash\n\n/usr/sbin/aide --check | /bin/mail -s \"$HOSTNAME - Daily aide integrity check run\" root@sysname.mil"
